@@ -15,13 +15,16 @@ const Home = () => {
             <p className='max-w-[530px] mb-9 text-white/80'>I excel at building efficient backend systems and APIs, with proficiency in modern frameworks, databases, and server-side technologies.</p>
             {/* btn */}
             <div className='flex flex-col xl:flex-row items-center gap-8'>
-              <Button
-                variant="outline"
-                size="lg"
-                className=" uppercase flex items-center gap-2"
-              ><span>Download CV</span>
-                <FiDownload className='text-xl' />
-              </Button>
+              <a href="/CHINTAN HARKHANI_2025.pdf" download>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>Download CV</span>
+                  <FiDownload className='text-xl' />
+                </Button>
+              </a>
               <div className='mb-8 xl:mb-0'>
                 <Social
                   containerStyles="flex gap-6"
@@ -36,7 +39,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <State/>
+      <State />
     </section>
   )
 }
