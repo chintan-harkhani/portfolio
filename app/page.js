@@ -11,7 +11,7 @@ const Home = () => {
         <div className='flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24'>
           <div className='text-center xl:text-left order-2 xl:order-none'>
             <span className='text-xl text-white'>Full Stack Developer</span>
-            <h1 className='h1 mb-6 text-white'>Hello I'm <br /> <span className='text-accent'>Chintan Harkhani</span></h1>
+            <h1 className='h1 mb-6 text-white'>{`Hello I'm`}<br /> <span className='text-accent'>Chintan Harkhani</span></h1>
             <p className='max-w-[530px] mb-9 text-white/80'>I excel at building efficient backend systems and APIs, with proficiency in modern frameworks, databases, and server-side technologies.</p>
             {/* btn */}
             <div className='flex flex-col xl:flex-row items-center gap-8'>
