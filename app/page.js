@@ -1,18 +1,35 @@
+"use client";
 import Photo from '@/components/Photo'
 import Social from '@/components/Social'
 import State from '@/components/State'
 import { Button } from '@/components/ui/button'
 import { FiDownload } from 'react-icons/fi'
+import axios from './lib/axios'
+import { useEffect, useState } from 'react'
+
 
 const Home = () => {
+  const [profile, setProfile] = useState({});
+
+
+  useEffect(() => {
+    axios.get('/profile')
+      .then(res => {
+        console.log(res.data.name);
+        setProfile(res.data);
+      })
+      .catch(err => console.error("API Error:", err));
+  }, {});
+
+
   return (
     <section className='h-full'>
       <div className='container mx-auto h-full'>
         <div className='flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24'>
           <div className='text-center xl:text-left order-2 xl:order-none'>
-            <span className='text-xl text-white'>Full Stack Developer</span>
-            <h1 className='h1 mb-6 text-white'>{`Hello I'm`}<br /> <span className='text-accent'>Chintan Harkhani</span></h1>
-            <p className='max-w-[530px] mb-9 text-white/80'>I excel at building efficient backend systems and APIs, with proficiency in modern frameworks, databases, and server-side technologies.</p>
+            <span className='text-xl text-white'>{profile.position}</span>
+            <h1 className='h1 mb-6 text-white'>{`Hello I'm`}<br /> <span className='text-accent'>{profile.name}</span></h1>
+            <p className='max-w-[530px] mb-9 text-white/80'>{profile.desc}</p>
             {/* btn */}
             <div className='flex flex-col xl:flex-row items-center gap-8'>
               <a href="/CHINTAN HARKHANI_2025.pdf" download>

@@ -3,43 +3,63 @@
 import Link from "next/link";
 import { BsArrowDownRight } from "react-icons/bs";
 import { motion } from 'framer-motion';
+import { useEffect, useState } from "react";
+import axios from '../lib/axios'
 
-const services = [
-  {
-    num: "01",
-    title: "Backend Development",
-    desc: "Implement secure, scalable back-end architectures for optimized performance and data processing",
-    href: "",
-  },
-  {
-    num: "02",
-    title: "API Development",
-    desc: "Develop and integrate custom APIs for seamless connectivity and enhanced application functionality.",
-    href: "",
-  },
-  {
-    num: "03",
-    title: "Database desgin",
-    desc: "Design high-performance databases that support secure, scalable, and integrated full-stack solutions",
-    href: "",
-  },
-  {
-    num: "04",
-    title: "Frontend Development",
-    desc: "Design intuitive, responsive interfaces that deliver consistent, user experiences across all platforms.",
-    href: "",
-  },
-  // {
-  //   num: "05",
-  //   title: "Frontend Development",
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo facilis odit molestias corrupti",
-  //   href: "",
-  // },
+// const services = [
+//   {
+//     num: "01",
+//     title: "Backend Development",
+//     desc: "Implement secure, scalable back-end architectures for optimized performance and data processing",
+//     href: "",
+//   },
+//   {
+//     num: "02",
+//     title: "API Development",
+//     desc: "Develop and integrate custom APIs for seamless connectivity and enhanced application functionality.",
+//     href: "",
+//   },
+//   {
+//     num: "03",
+//     title: "Database desgin",
+//     desc: "Design high-performance databases that support secure, scalable, and integrated full-stack solutions",
+//     href: "",
+//   },
+//   {
+//     num: "04",
+//     title: "Frontend Development",
+//     desc: "Design intuitive, responsive interfaces that deliver consistent, user experiences across all platforms.",
+//     href: "",
+//   },
+//   // {
+//   //   num: "05",
+//   //   title: "Frontend Development",
+//   //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo facilis odit molestias corrupti",
+//   //   href: "",
+//   // },
 
-]
-
-
+// ]
 const Services = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    axios.get('/service')
+      .then(res => {
+        console.log(res.data);
+        setServices(res.data);
+      })
+      .catch(err => console.error("API Error:", err));
+  }, []);
+
+  if (services.length === 0) {
+    return (
+      <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
+        <div className="container mx-auto text-white text-center">
+          <p>No services found.</p>
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
       <div className="container mx-auto">

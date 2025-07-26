@@ -1,6 +1,5 @@
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
 //cmponents 
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
